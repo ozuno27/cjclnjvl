@@ -1,0 +1,206 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102a43">
+  <title>Science Portfolio | Student Name</title>
+  <style>
+    :root {
+      --navy: #102a43;
+      --blue: #176b87;
+      --cyan: #39a9bd;
+      --mint: #dff5ef;
+      --paper: #f5f8fa;
+      --ink: #243b53;
+      --muted: #627d98;
+      --white: #fff;
+      --shadow: 0 16px 40px rgba(16, 42, 67, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink);
+      background: var(--paper); line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .nav {
+      position: sticky; top: 0; z-index: 10; background: rgba(16,42,67,.96);
+      color: white; backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: auto; padding: 14px 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    }
+    .brand { font-weight: 800; letter-spacing: .4px; }
+    .brand span { color: #7ee0d0; }
+    .links { display: flex; flex-wrap: wrap; gap: 20px; font-size: .92rem; }
+    .links a { opacity: .88; }
+    .links a:hover { color: #7ee0d0; opacity: 1; }
+    .hero {
+      color: white; overflow: hidden; position: relative;
+      background: radial-gradient(circle at 82% 25%, rgba(57,169,189,.42), transparent 27%),
+                  linear-gradient(125deg, #102a43 5%, #176b87 65%, #238b91);
+    }
+    .hero-inner {
+      max-width: 1120px; margin: auto; padding: 92px 24px 100px;
+      display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 50px;
+    }
+    .eyebrow { color: #a8f0df; text-transform: uppercase; letter-spacing: 2px; font-size: .78rem; font-weight: 700; }
+    h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.05; margin: 14px 0 20px; }
+    .hero p { max-width: 610px; color: #e4f1f5; font-size: 1.1rem; }
+    .button {
+      display: inline-block; margin-top: 18px; padding: 12px 20px; border-radius: 999px;
+      background: #a8f0df; color: #102a43; font-weight: 800;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px #071d2c55; }
+    .orbit {
+      width: min(310px, 70vw); aspect-ratio: 1; margin: auto; border: 1px solid #ffffff55;
+      border-radius: 50%; display: grid; place-items: center; position: relative;
+      box-shadow: 0 0 0 28px #ffffff0b, 0 0 0 58px #ffffff08;
+    }
+    .orbit:before, .orbit:after {
+      content: ""; position: absolute; width: 16px; height: 16px; border-radius: 50%; background: #a8f0df;
+      box-shadow: 0 0 24px #a8f0df;
+    }
+    .orbit:before { top: 22px; right: 45px; }
+    .orbit:after { bottom: 42px; left: 20px; width: 10px; height: 10px; background: #f5c86b; }
+    .atom { font-size: 6.5rem; color: #dffbf5; text-shadow: 0 0 30px #a8f0df88; }
+    main { max-width: 1120px; margin: auto; padding: 64px 24px; }
+    section { scroll-margin-top: 82px; margin-bottom: 74px; }
+    .section-label { color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; }
+    h2 { color: var(--navy); font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; margin: 8px 0 16px; }
+    .intro { color: var(--muted); max-width: 720px; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: stretch; }
+    .panel, .card {
+      background: white; border: 1px solid #e4edf2; border-radius: 20px; padding: 26px; box-shadow: var(--shadow);
+    }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .fact { background: var(--mint); border-radius: 14px; padding: 16px; }
+    .fact strong { display: block; color: var(--navy); font-size: 1.15rem; }
+    .fact span { color: var(--muted); font-size: .88rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 26px; }
+    .card { padding: 0; overflow: hidden; }
+    .card-top {
+      min-height: 132px; display: grid; place-items: center; font-size: 3rem;
+      background: linear-gradient(135deg, #dff5ef, #dceefa);
+    }
+    .card-body { padding: 21px; }
+    .tag { display: inline-block; background: #e7f4f7; color: #176b87; padding: 4px 10px; border-radius: 99px; font-size: .75rem; font-weight: 800; }
+    h3 { color: var(--navy); margin: 10px 0 8px; }
+    .card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .timeline { border-left: 3px solid #b5e8dd; margin: 26px 0 0 8px; padding-left: 25px; }
+    .entry { position: relative; padding: 0 0 25px; }
+    .entry:before { content: ""; position: absolute; left: -34px; top: 7px; width: 13px; height: 13px; background: var(--blue); border: 3px solid var(--paper); border-radius: 50%; }
+    .entry small { color: var(--blue); font-weight: 800; }
+    .entry h3 { margin: 3px 0; }
+    .reflection { background: var(--navy); color: white; border-radius: 22px; padding: 32px; }
+    .reflection h2 { color: white; }
+    .reflection p { color: #d7e7ef; max-width: 850px; }
+    .contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+    footer { text-align: center; padding: 25px; color: var(--muted); font-size: .88rem; }
+    .edit-note { color: var(--muted); font-size: .85rem; margin-top: 10px; }
+    @media (max-width: 760px) {
+      .nav-inner { align-items: flex-start; flex-direction: column; }
+      .links { gap: 12px; }
+      .hero-inner, .about-grid { grid-template-columns: 1fr; }
+      .hero-inner { padding-top: 65px; text-align: center; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .cards { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#home">SCIENCE<span>PORTFOLIO</span></a>
+      <div class="links">
+        <a href="#about">About</a><a href="#work">My Work</a><a href="#journey">Learning Journey</a><a href="#reflection">Reflection</a><a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Explore · Experiment · Discover</div>
+        <h1>My Science<br>Portfolio</h1>
+        <p>A collection of my science activities, projects, discoveries, and reflections. This portfolio shows what I have learned and how my curiosity grows through science.</p>
+        <a class="button" href="#work">Explore my work ↓</a>
+      </div>
+      <div class="orbit" aria-hidden="true"><div class="atom">⚛</div></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="section-label">01 / Introduction</div>
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div class="panel">
+          <p>Hello! I'm <strong>[Your Name]</strong>, a student who is learning about the world through science. I enjoy discovering how things work, asking questions, and connecting lessons to everyday life.</p>
+          <p>This portfolio contains selected activities and projects from my science class. It also shows the skills and knowledge I have developed throughout the school year.</p>
+          <p class="edit-note">Replace the name and paragraphs with your own information.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><strong>9-Emerald</strong><span>Grade level</span></div>
+          <div class="fact"><strong>2026-2027</strong><span>Academic year</span></div>
+          <div class="fact"><strong>Science</strong><span>Subject</span></div>
+          <div class="fact"><strong>Curiosity</strong><span>My approach</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-label">02 / Activities & Projects</div>
+      <h2>My Science Work</h2>
+      <p class="intro">A few examples of the topics and activities I have explored. Add your own photos, worksheets, experiment results, and project files.</p>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top">🧪</div>
+          <div class="card-body"><span class="tag">Chemistry</span><h3>Chemical Reactions</h3><p>I learned how substances change and how chemical reactions can be seen in everyday activities, such as cooking.</p></div>
+        </article>
+        <article class="card">
+          <div class="card-top">⚡</div>
+          <div class="card-body"><span class="tag">Physics</span><h3>Electricity & Magnetism</h3><p>I explored the relationship between electricity and magnetism and how these ideas are used in technology.</p></div>
+        </article>
+        <article class="card">
+          <div class="card-top">🌋</div>
+          <div class="card-body"><span class="tag">Earth Science</span><h3>Earthquakes & Faults</h3><p>I studied how movement along faults can cause earthquakes and why understanding hazards is important.</p></div>
+        </article>
+      </div>
+      <p class="edit-note">These are sample entries. Change them to match the actual lessons and projects you completed.</p>
+    </section>
+
+    <section id="journey">
+      <div class="section-label">03 / Progress</div>
+      <h2>My Learning Journey</h2>
+      <p class="intro">Important lessons and skills I developed during the course.</p>
+      <div class="timeline">
+        <div class="entry"><small>LESSON 01</small><h3>Observing and Asking Questions</h3><p>I practiced being curious, making observations, and asking questions about things around me.</p></div>
+        <div class="entry"><small>LESSON 02</small><h3>Understanding Scientific Ideas</h3><p>I learned to explain science concepts using examples and evidence.</p></div>
+        <div class="entry"><small>LESSON 03</small><h3>Applying What I Learned</h3><p>I connected classroom lessons to real-life situations and activities.</p></div>
+        <div class="entry"><small>LESSON 04</small><h3>Reflecting and Improving</h3><p>I looked back at my work, recognized what I understood, and identified what I still need to practice.</p></div>
+      </div>
+    </section>
+
+    <section id="reflection">
+      <div class="reflection">
+        <div class="section-label">04 / Personal Reflection</div>
+        <h2>What Science Means to Me</h2>
+        <p>Science helps me understand how the world works. Through our lessons and activities, I learned to think carefully, solve problems, and look for evidence before making conclusions. Some topics were challenging, but they helped me become more patient and willing to learn. I hope to keep using what I learn in science in my everyday life.</p>
+        <p class="edit-note" style="color:#b8d4df">Edit this reflection so it describes your own experience.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <div><div class="section-label">05 / The End</div><h2>Thank You for Visiting!</h2><p class="intro">Thank you for taking the time to view my science portfolio.</p></div>
+        <a class="button" href="#home">Back to top ↑</a>
+      </div>
+    </section>
+  </main>
+  <footer>© <span id="year"></span> Cjclnjvl · Science Portfolio</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
